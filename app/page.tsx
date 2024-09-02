@@ -6,11 +6,13 @@ import { ProductContextProvider } from "./context/ProductContext";
 export default function Home() {
   return (
     <ProductContextProvider>
-      <Header/>
-      <Carrousel/>
-      <section className="w-[80%] mx-auto my-6">
-        <ProductInformation/>
-      </section>
+      <div className="flex flex-col h-screen">
+        <Header/>
+        <section className="flex flex-col gap-6 flex-1 justify-center items-center mx-auto desktop:flex-row desktop:w-[90%] desktop:gap-16 xl:w-[70%]">
+          <Carrousel/>
+          <ProductInformation/>
+        </section>
+      </div>
     </ProductContextProvider>
   );
 }

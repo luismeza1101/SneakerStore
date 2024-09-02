@@ -1,64 +1,88 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
+import { useState } from 'react';
+import Image from 'next/image';
 
-const Carrousel = () => {
-  const imagesCarrousel = [
-    "/images/image-product-1.jpg",
+const images = [
+  "/images/image-product-1.jpg",
     "/images/image-product-2.jpg",
     "/images/image-product-3.jpg",
     "/images/image-product-4.jpg",
-  ];
+];
+
+const imagesThumbnail = [
+      "/images/image-product-1-thumbnail.jpg",
+      "/images/image-product-2-thumbnail.jpg",
+      "/images/image-product-3-thumbnail.jpg",
+      "/images/image-product-4-thumbnail.jpg",
+    ];
+
+const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const widthCarrousel = imagesCarrousel.length * 100;
 
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex == imagesCarrousel.length - 1 ? 0 : prevIndex + 1
-    )
-  };
-
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex == 0 ? imagesCarrousel.length - 1 : prevIndex - 1
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const selectSlide = (id: number) => {
+    setCurrentIndex(id)
+  }
+
   return (
-    <div className="relative w-full h-96 select-none">
+    <div className="relative w-full overflow-hidden">
       <div
-        className={`bg-black w-[${widthCarrousel}%] h-full flex overflow-x-hidden transition-transform duration-500`}
-        style={{
-          transform: `translateX(-${
-            (currentIndex * 100) / imagesCarrousel.length
-          }%)`,
-        }}
+        className="flex transition-transform duration-500"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {imagesCarrousel.map((src, index) => (
-          <picture className="w-full relative" key={index}>
-            <Image src={src} alt="Imagen del producto" fill objectFit="cover" />
-          </picture>
+        {images.map((src, index) => (
+          <div key={index} className="w-full flex-shrink-0 relative h-96">
+            <Image
+              src={src}
+              alt={`Slide ${index}`}
+              layout="fill"
+              objectFit="cover"
+              className="w-full desktop:rounded-xl"
+            />
+          </div>
         ))}
       </div>
-      <div className="absolute bg-white rounded-full w-10 h-10 flex items-center justify-center right-4 top-[40%] cursor-pointer" onClick={nextImage}>
-        <Image
-          src="/images/icon-next.svg"
-          alt="Next"
-          width={10}
-          height={10}
-        />
-      </div>
-      <div className="absolute bg-white rounded-full w-10 h-10 flex items-center justify-center left-4 top-[40%] cursor-pointer" onClick={prevImage}>
-        <Image
-          src="/images/icon-previous.svg"
-          alt="Previous"
-          width={10}
-          height={10}
-        />
+
+      <div className="desktop:hidden">
+          <div className="absolute bg-white rounded-full w-10 h-10 flex items-center justify-center right-4 top-[40%] cursor-pointer" onClick={nextSlide}>
+            <Image
+              src="/images/icon-next.svg"
+              alt="Next"
+              width={10}
+              height={10}
+            />
+          </div>
+          <div className="absolute bg-white rounded-full w-10 h-10 flex items-center justify-center left-4 top-[40%] cursor-pointer" onClick={prevSlide}>
+            <Image
+              src="/images/icon-previous.svg"
+              alt="Previous"
+              width={10}
+              height={10}
+            />
+          </div>
+        </div>
+        <div className="hidden desktop:flex w-full justify-evenly mt-5">
+          {imagesThumbnail.map((image, index) => (
+            <picture className="relative cursor-pointer" onClick={() => selectSlide(index)}>
+              <Image src={image} alt="Imagen" width={60} height={60} className="rounded-lg"/>
+              {currentIndex == index ? (<div className="bg-Pale_Orange absolute w-full h-full top-0 opacity-50 border-2 border-orange-600 rounded-lg"></div>) : null}             
+            </picture>
+          ))}
       </div>
     </div>
   );
 };
 
-export default Carrousel;
+export default Carousel;

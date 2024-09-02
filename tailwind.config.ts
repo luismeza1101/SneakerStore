@@ -17,7 +17,11 @@ const config: Config = {
       "Black": "hsl(0, 0%, 0%, 75%)",
     },
     backgroundColor:{
-      "Orange": "hsl(26, 100%, 55%)"
+      "Orange": "hsl(26, 100%, 55%)",
+      "Pale_Orange" : "hsl(25, 100%, 94%)"
+     },
+     screens:{
+      "desktop": "760px"
      }
     },
   },

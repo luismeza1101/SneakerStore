@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useProductContext } from "../context/ProductContext";
 
 const Header = () => {
+  const options = ['Collections', 'Men', 'Women', 'About', 'Contact']
   const [showCarShop, setShowCartShop] = useState(false);
   const [showNavBar, setShowNavBar] = useState(false);
   const { cantProducts } = useProductContext();
@@ -17,21 +18,26 @@ const Header = () => {
   };
 
   return (
-    <div className="relative w-full">
-      <header className="w-full flex justify-between px-6 py-4">
-        <div className="flex items-center gap-4">
+    <div className="relative w-full h-20 ">
+      <header className="w-full flex justify-between h-20 px-6 desktop:justify-around">
+        <div className="flex items-center gap-4 h-full">
           <div>
             <Image
               src="/images/icon-menu.svg"
               alt="Logo Menu"
               width={20}
               height={20}
-              className="cursor-pointer"
+              className="cursor-pointer desktop:hidden"
               onClick={handleShowNavBar}
             />
-            {showNavBar && <NavBar setShowNavBar={setShowNavBar} />}
+            {showNavBar && <NavBar setShowNavBar={setShowNavBar} options={options}/>}
           </div>
           <Image src="/images/logo.svg" alt="Logo" width={130} height={50} />
+          <ul className="hidden desktop:flex gap-4 ml-5 h-full">
+            {options.map(option => (
+              <li className="flex items-center cursor-pointer h-full hover:border-b-4 hover:border-orange-600">{option}</li>
+            ))}
+          </ul>
         </div>
         <div className="flex gap-7 items-center">
           <div className="flex flex-col">
