@@ -62,9 +62,9 @@ const Carrousel: React.FC<Props> = ({setShowPhotos, showControls}) => {
             <Image
               src={src}
               alt={`Slide ${index}`}
-              layout="fill"
-              objectFit="cover"
+              fill
               className="w-full desktop:rounded-xl"
+              style={{objectFit: 'cover'}}
             />
           </div>
         ))}
@@ -99,6 +99,7 @@ const Carrousel: React.FC<Props> = ({setShowPhotos, showControls}) => {
           <picture
             className="relative cursor-pointer"
             onClick={() => selectSlide(index)}
+            key={index}
           >
             <Image
               src={image}

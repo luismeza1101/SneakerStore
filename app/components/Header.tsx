@@ -34,8 +34,8 @@ const Header = () => {
           </div>
           <Image src="/images/logo.svg" alt="Logo" width={130} height={50} />
           <ul className="hidden desktop:flex gap-4 ml-5 h-full">
-            {options.map(option => (
-              <li className="flex items-center cursor-pointer h-full hover:border-b-4 hover:border-orange-600">{option}</li>
+            {options.map((option, index) => (
+              <li className="flex items-center cursor-pointer h-full hover:border-b-4 hover:border-orange-600" key={index}>{option}</li>
             ))}
           </ul>
         </div>
