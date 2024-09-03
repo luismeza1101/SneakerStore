@@ -15,6 +15,7 @@ const ProductContext = createContext<ProductContextTypes | undefined>(undefined)
 export const ProductContextProvider: React.FC<{children: ReactNode}> = ({children}) => {
     const [listProducts, setListProducts] = useState<Products[]>([])
     const [cantProducts, setCantProducts] = useState(0)
+    const [showPhotos, setShowPhotos] = useState(false)
 
     const contextValue = useMemo(() => ({listProducts, setListProducts, cantProducts, setCantProducts}), [listProducts, cantProducts])
 

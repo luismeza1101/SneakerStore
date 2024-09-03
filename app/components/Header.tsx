@@ -40,7 +40,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="flex gap-7 items-center">
-          <div className="flex flex-col">
+          <div className="flex flex-col desktop:relative">
             <div className="relative h-full">
               {cantProducts != 0 ? (
                 <div className="absolute text-White text-xs font-semibold -top-2 -right-2 bg-Orange px-2 rounded-xl">
@@ -61,8 +61,9 @@ const Header = () => {
           <Image
             src="/images/image-avatar.png"
             alt="Logo"
-            width={30}
-            height={30}
+            width={40}
+            height={40}
+            className="outline-2 outline-orange-600 rounded-full cursor-pointer hover:outline"
           />
         </div>
       </header>

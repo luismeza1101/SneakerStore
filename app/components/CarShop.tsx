@@ -4,16 +4,17 @@ import Image from "next/image";
 import { useProductContext } from "../context/ProductContext";
 
 const CarShop = () => {
-  const { listProducts, setListProducts, setCantProducts} = useProductContext();
+  const { listProducts, setListProducts, setCantProducts } =
+    useProductContext();
 
   const deleteProduct = (id: string) => {
     const newListProducts = listProducts.filter((product) => product.id != id);
     setListProducts(newListProducts);
-    setCantProducts(0)
+    setCantProducts(0);
   };
 
   return (
-    <div className="bg-white absolute z-[50] rounded-lg w-[95%] min-h-72 left-1/2 top-[110%] transform -translate-x-1/2 flex flex-col">
+    <div className="bg-white absolute z-[50] rounded-lg w-[95%] min-h-72 left-1/2 top-[110%] transform -translate-x-1/2 flex flex-col shadow-2xl desktop:w-[30rem] desktop:-left-28 desktop:top-10">
       <h6 className="font-bold block border-b-2 p-5">Cart</h6>
       <div className="flex-1 flex items-center justify-center">
         {listProducts.length == 0 ? (

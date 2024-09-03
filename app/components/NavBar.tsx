@@ -19,7 +19,7 @@ const NavBar: React.FC<Props> = ({ setShowNavBar, options }) => {
         />
         <ul className="font-bold grid gap-5 mt-12">
           {options.map(option => (
-            <li>{option}</li>
+            <li className="cursor-pointer">{option}</li>
           ))}
         </ul>
       </nav>

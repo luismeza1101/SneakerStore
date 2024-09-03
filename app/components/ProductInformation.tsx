@@ -91,7 +91,7 @@ const ProductInformation = () => {
         </div>
         <button
           className="bg-Orange w-full flex justify-center items-center
-          gap-4 py-4 rounded-lg font-bold text-Very_dark_blue text-sm desktop:w-[60%]"
+          gap-4 py-4 rounded-lg font-bold text-Very_dark_blue text-sm desktop:w-[60%] hover:bg-orange-400"
           onClick={addToCarShop}
         >
           <Image
