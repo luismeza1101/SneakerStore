@@ -48,7 +48,7 @@ const ProductInformation = () => {
         <h3 className="font-bold text-3xl">{dataProduct.name}</h3>
         <p className="text-Dark_grayish_blue text-sm">
           These low-profile sneaker are your perfect casual wear companion.
-          Featuring a durable rubber outer sole. they'll withstand everything
+          Featuring a durable rubber outer sole. they will withstand everything
           the weather can offer
         </p>
         <div className="flex items-center justify-between desktop:flex-col desktop:items-start">

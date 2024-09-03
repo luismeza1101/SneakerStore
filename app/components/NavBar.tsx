@@ -18,8 +18,8 @@ const NavBar: React.FC<Props> = ({ setShowNavBar, options }) => {
           onClick={() => setShowNavBar(false)}
         />
         <ul className="font-bold grid gap-5 mt-12">
-          {options.map(option => (
-            <li className="cursor-pointer">{option}</li>
+          {options.map((option, index) => (
+            <li className="cursor-pointer" key={index}>{option}</li>
           ))}
         </ul>
       </nav>
